@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w( staff.css )
+Rails.application.config.assets.precompile += %w( admin.css staff.css customer.css )
