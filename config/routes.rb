@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   namespace :customer do
     root 'top#index'
   end
+
+  root 'errors#not_found'
+  get '*anything' => 'errors#not_found'
 end
