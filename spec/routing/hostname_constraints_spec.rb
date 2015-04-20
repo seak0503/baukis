@@ -9,6 +9,14 @@ describe 'ルーティング' do
     )
   end
 
+  example '顧客トップページ' do
+    expect(get: 'http://example.com/mypage').to route_to(
+      host: 'example.com',
+      controller: 'customer/top',
+      action: 'index'
+    )
+  end
+
   example '管理者ログインフォーム' do
     expect(get: 'http://baukis.example.com/admin/login').to route_to(
       host: 'baukis.example.com',
