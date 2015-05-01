@@ -1,5 +1,4 @@
 class Admin::StaffMembersController < Admin::Base
-
   def index
     @staff_members = StaffMember.order(:family_name_kana, :given_name_kana)
   end
@@ -13,6 +12,10 @@ class Admin::StaffMembersController < Admin::Base
     @staff_member = StaffMember.new
   end
 
+  def edit
+    @staff_member = StaffMember.find(params[:id])
+  end
+
   def create
     @staff_member = StaffMember.new(staff_member_params)
     if @staff_member.save
@@ -21,10 +24,6 @@ class Admin::StaffMembersController < Admin::Base
     else
       render action: 'new'
     end
-  end
-
-  def edit
-    @staff_member = StaffMember.find(params[:id])
   end
 
   def update
