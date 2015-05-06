@@ -1,5 +1,5 @@
-@import "colors";
-@import "dimensions";
+@import 'colors';
+@import 'dimensions';
 
 html, body {
   margin: 0;
@@ -20,7 +20,7 @@ header {
   color: $very_light_gray;
   a.logo-mark {
     float: none;
-    text-decoration: bold;
+    text-decoration: none;
     font-weight: bold;
   }
   a {
@@ -32,8 +32,8 @@ footer {
   bottom: 0;
   position: absolute;
   width: 100%;
-  background-color: #666666;
-  color: #eeeeee;
+  background-color: $dark_gray;
+  color: $very_light_gray;
   p {
     text-align: center;
     padding: $moderate;
