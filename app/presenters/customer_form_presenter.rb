@@ -1,7 +1,7 @@
 class CustomerFormPresenter < UserFormPresenter
   def birthday_field_block(name, label_text, options = {})
     markup(:div, class: 'input-block') do |m|
-      m << decorated_label(name, label_text, otions)
+      m << decorated_label(name, label_text, options)
       if options[:class].kind_of?(String)
         classes = options[:class].strip.split + [ 'birthday-picker' ]
         options[:class] = classes.uniq.join(' ')

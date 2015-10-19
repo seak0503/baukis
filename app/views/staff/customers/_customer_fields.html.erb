@@ -7,5 +7,7 @@
       m << q.full_name_block(:family_name, :given_name, '氏名')
       m << q.full_name_block(:family_name_kana, :given_name_kana, 'フリガナ')
     end
+    m << p.birthday_field_block(:birthday, '生年月日')
+    m << p.gender_field_block
   end %>
 <% end %>
