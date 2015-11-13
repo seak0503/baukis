@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110112701) do
+ActiveRecord::Schema.define(version: 20151113012032) do
 
   create_table "addresses", force: true do |t|
     t.integer  "customer_id",                null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20151110112701) do
 
   add_index "addresses", ["city"], name: "index_addresses_on_city", using: :btree
   add_index "addresses", ["customer_id"], name: "index_addresses_on_customer_id", using: :btree
+  add_index "addresses", ["postal_code"], name: "index_addresses_on_postal_code", using: :btree
   add_index "addresses", ["prefecture", "city"], name: "index_addresses_on_prefecture_and_city", using: :btree
   add_index "addresses", ["type", "city"], name: "index_addresses_on_type_and_city", using: :btree
   add_index "addresses", ["type", "customer_id"], name: "index_addresses_on_type_and_customer_id", unique: true, using: :btree
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 20151110112701) do
   add_index "customers", ["birth_year", "given_name_kana"], name: "index_customers_on_birth_year_and_given_name_kana", using: :btree
   add_index "customers", ["email_for_index"], name: "index_customers_on_email_for_index", unique: true, using: :btree
   add_index "customers", ["family_name_kana", "given_name_kana"], name: "index_customers_on_family_name_kana_and_given_name_kana", using: :btree
+  add_index "customers", ["gender", "family_name_kana", "given_name_kana"], name: "index_customers_on_gender_and_furigana", using: :btree
   add_index "customers", ["given_name_kana"], name: "index_customers_on_given_name_kana", using: :btree
 
   create_table "phones", force: true do |t|
