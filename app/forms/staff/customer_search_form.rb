@@ -5,7 +5,7 @@ class Staff::CustomerSearchForm
   attr_accessor :family_name_kana, :given_name_kana,
     :birth_year, :birth_month, :birth_mday,
     :address_type, :prefecture, :city, :phone_number, :gender,
-    :postal_code
+    :postal_code, :last_four_digits
 
   def search
     normalize_values
@@ -38,11 +38,13 @@ class Staff::CustomerSearchForm
       end
       rel = rel.where('addresses.city' => city) if city.present?
       rel = rel.where('addresses.postal_code' => postal_code) if postal_code.present?
-
-      if phone_number.present?
-        rel = rel.joins(:phones).where('phones.number_for_index' => phone_number)
-      end
     end
+
+    if phone_number.present? || last_four_digits.present?
+      rel = rel.joins(:phones)
+    end
+    rel = rel.where('phones.number_for_index' => phone_number) if phone_number.present?
+    rel = rel.where('phones.last_four_digits' => last_four_digits) if last_four_digits.present?
 
     rel = rel.distinct
     rel.order(:family_name_kana, :given_name_kana)
