@@ -9,12 +9,12 @@ class Customer::Base < ApplicationController
     end
   end
 
+  helper_method :current_customer
+
   def authorize
     unless current_customer
-      unless current_customer
-        flash.alert = 'ログインしてください。'
-        redirect_to :customer_login
-      end
+      flash.alert = 'ログインしてください。'
+      redirect_to :customer_login
     end
   end
 end
