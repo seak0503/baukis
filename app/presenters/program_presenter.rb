@@ -1,6 +1,6 @@
 class ProgramPresenter < ModelPresenter
   delegate :title, :description, to: :object
-  delegate :number_with_delimiter, to: :view_contex
+  delegate :number_with_delimiter, to: :view_context
 
   def application_start_time
     object.application_start_time.strftime('%Y-%m-%d %H:%M')
@@ -27,6 +27,6 @@ class ProgramPresenter < ModelPresenter
   end
 
   def registrant
-    object.registrant.famiy_name + ' ' + object.registrant.given_name
+    object.registrant.family_name + ' ' + object.registrant.given_name
   end
 end
