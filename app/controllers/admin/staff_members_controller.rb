@@ -45,6 +45,7 @@ class Admin::StaffMembersController < Admin::Base
       flash.notice = '職員アカウントを削除しました。'
     else
       flash.alert = 'この職員アカウントは削除できません。'
+    end
     redirect_to :admin_staff_members
   end
 
