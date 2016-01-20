@@ -14,4 +14,8 @@ class Staff::ProgramsController < Staff::Base
   def edit
     @program_form = Staff::ProgramForm.new(Program.find(params[:id]))
   end
+
+  def create
+
+  end
 end
