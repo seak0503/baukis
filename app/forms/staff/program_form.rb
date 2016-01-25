@@ -19,7 +19,7 @@ class Staff::ProgramForm
       @program.application_start_minute = '00'
     end
     if @program.application_end_time
-      @program.application_start_date =
+      @program.application_end_date =
         @program.application_end_time.to_date.to_s
       @program.application_end_hour =
         sprintf('%02d', @program.application_end_time.hour)
