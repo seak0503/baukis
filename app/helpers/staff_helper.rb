@@ -10,7 +10,7 @@ module StaffHelper
         else
           anchor_text = ''
         end
-        m.span(anchor_text, id: 'number_of_unprocessed_messages')
+        m.span(anchor_text, id: 'number-of-unprocessed-messages')
       end
     end
   end
