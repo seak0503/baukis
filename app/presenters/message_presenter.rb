@@ -15,9 +15,9 @@ class MessagePresenter < ModelPresenter
   def sender
     case object
     when CustomerMessage
-      object.customer.family_name + ' ' + object.customer.given_nam
+      object.customer.family_name + ' ' + object.customer.given_name
     when StaffMessage
-      object.staff_member.family_name + ' ' + object.staff_member.given_nam
+      object.staff_member.family_name + ' ' + object.staff_member.given_name
     else
       raise
     end
@@ -36,6 +36,10 @@ class MessagePresenter < ModelPresenter
 
   def truncated_subject
     view_context.truncate(subject, length: 20)
+  end
+
+  def formatted_body
+    raw(ERB::Util.html_escape(body).gsub(/\n/, '<br />'))
   end
 
   def created_at

@@ -8,8 +8,7 @@ class ApplicationController < ActionController::Base
   class Forbidden < ActionController::ActionControllerError; end
   class IpAddressRejected < ActionController::ActionControllerError; end
 
-  #include ErrorHandlers if Rails.env.production?
-  include ErrorHandlers
+  include ErrorHandlers if Rails.env.production?
   rescue_from ApplicationController::Forbidden, with: :rescue403
   rescue_from ApplicationController::IpAddressRejected, with: :rescue403
 

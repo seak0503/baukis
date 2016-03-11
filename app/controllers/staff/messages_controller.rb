@@ -28,4 +28,15 @@ class Staff::MessagesController < Staff::Base
   def count
     render text: CustomerMessage.unprocessed.count
   end
+
+  def show
+    @message = Message.find(params[:id])
+  end
+
+  def destroy
+    message = CustomerMessage.find(params[:id])
+    message.update_column(:deleted, true)
+    flash.notice = '問い合わせを削除しました。'
+    redirect_to :back
+  end
 end
