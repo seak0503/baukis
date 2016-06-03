@@ -39,7 +39,7 @@ class Message < ActiveRecord::Base
     self.class.transaction do
       tag = Tag.find_by(value: lable)
       tag ||= Tag.create!(value: label)
-      unless message_tag_links.where(tag_id: tag.id).exists?()
+      unless message_tag_links.where(tag_id: tag.id).exists?
         message_tag_links.create!(tag_id: tag.id)
       end
     end
@@ -48,11 +48,10 @@ class Message < ActiveRecord::Base
   def remove_tag(label)
     self.class.transaction do
       if tag = Tag.find_by(value: label)
-        message_tag_links.find_by(tag_it: tag.id).destroy
+        message_tag_links.find_by(tag_id: tag.id).destroy
         if tag.message_tag_links.empty?
           tag.destroy
         end
-
       end
     end
   end
