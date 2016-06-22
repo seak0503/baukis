@@ -37,7 +37,7 @@ class Message < ActiveRecord::Base
 
   def add_tag(label)
     self.class.transaction do
-      tag = Tag.find_by(value: lable)
+      tag = Tag.find_by(value: label)
       tag ||= Tag.create!(value: label)
       unless message_tag_links.where(tag_id: tag.id).exists?
         message_tag_links.create!(tag_id: tag.id)

@@ -8,8 +8,8 @@ $(document).on 'page:change', ->
     afterTagRemoved: (e, ui) ->
       unless ui.duringInitialization
         message_id = $("#tag-it").data('message-id')
-        path = "#{window.paths.staff_root}/mesages/#{message_id}/tag"
-        $.ajax(type: 'DELETE', url: path, data: { label: ui.tagLable })
+        path = "#{window.paths.staff_root}/messages/#{message_id}/tag"
+        $.ajax(type: 'DELETE', url: path, data: { label: ui.tagLabel })
   )
 
 
