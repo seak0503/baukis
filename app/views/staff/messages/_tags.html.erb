@@ -4,7 +4,15 @@
     <% if tag.id == params[:tag_id].to_i %>
       <span class="current_tag"><%= tag.value %></span>
     <% else %>
-      <%= link_to tag.value, [ :staff, tag, :messages ] %>
+      <% if /\/inbound\Z/ =~ request.path_info %>
+        <%= link_to tag.value, [ :inbound_staff, tag, :messages ] %>
+      <% elsif /\/outbound\Z/ =~ request.path_info %>
+        <%= link_to tag.value, [ :outbound_staff, tag, :messages ] %>
+      <% elsif /\/deleted\Z/ =~ request.path_info %>
+        <%= link_to tag.value, [ :deleted_staff, tag, :messages ] %>
+      <% else %>
+        <%= link_to tag.value, [ :staff, tag, :messages ] %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
