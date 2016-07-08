@@ -18,7 +18,6 @@ class Customer::RepliesController < Customer::Base
   def create
     @reply = CustomerMessage.new(customer_message_params)
     if params[:commit]
-      @reply.customer = current_customer
       @reply.parent = @message
       if @reply.save
         flash.notice = 'メッセージに返信しました。'
