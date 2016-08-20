@@ -1,6 +1,6 @@
 class Admin::Base < ApplicationController
   before_action :check_source_ip_address
-  #before_action :authorize
+  before_action :authorize
   before_action :check_account
   before_action :check_timeout
 
