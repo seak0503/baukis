@@ -22,13 +22,9 @@ class Staff::AccountsController < Staff::Base
   def update
     @staff_member = current_staff_member
     @staff_member.assign_attributes(staff_member_params)
-    if params[:commit]
-      if @staff_member.save
-        flash.notice = 'アカウント情報を更新しました。'
-        redirect_to :staff_account
-      else
-        render action: 'edit'
-      end
+    if @staff_member.save
+      flash.notice = 'アカウント情報を更新しました。'
+      redirect_to :staff_account
     else
       render action: 'edit'
     end
