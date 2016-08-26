@@ -18,7 +18,7 @@ feature '職員による顧客管理' do
     fill_in 'form_customer_family_name', with: '試験'
     fill_in 'form_customer_given_name', with: '花子'
     fill_in 'form_customer_family_name_kana', with: 'シケン'
-    fill_in 'form_customer_family_name_kana', with: 'ハナコ'
+    fill_in 'form_customer_given_name_kana', with: 'ハナコ'
     fill_in '生年月日', with: '1970-01-01'
     choose '女性'
     click_button '登録'
@@ -28,6 +28,7 @@ feature '職員による顧客管理' do
     expect(new_customer.birthday).to eq(Date.new(1970, 1, 1))
     expect(new_customer.gender).to eq('female')
     expect(new_customer.home_address).to be_nil
+    expect(new_customer.work_address).to be_nil
   end
 
   scenario '職員が顧客、自宅住所、勤務先を追加する' do
