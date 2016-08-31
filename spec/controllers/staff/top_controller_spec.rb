@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Staff::TopController do
-  context 'ログイン前' do
-    let(:staff_member) { create(:staff_member) }
+  let(:staff_member) { create(:staff_member) }
 
+  context 'ログイン前' do
     describe 'IPアドレスによるアクセス制限' do
       before do
         Rails.application.config.baukis[:restrict_ip_addresses] = true
@@ -24,15 +24,12 @@ describe Staff::TopController do
   end
 
   context "ログイン後" do
-    let(:staff_member) { create(:staff_member) }
-
-    before do
-      Rails.application.config.baukis[:restrict_ip_addresses] = false
-      session[:staff_member_id] = staff_member.id
-      session[:last_access_time] = 1.second.ago
-    end
-
     describe '#index' do
+      before do
+        session[:staff_member_id] = staff_member.id
+        session[:last_access_time] = 1.second.ago
+      end
+
       example '通常はstaff/top/dashboardを表示' do
         get :index
         expect(response).to render_template('staff/top/dashboard')
