@@ -24,6 +24,7 @@ describe Staff::TopController do
   end
 
   context "ログイン後" do
+    let(:staff_member) { create(:staff_member) }
     describe '#index' do
       before do
         session[:staff_member_id] = staff_member.id
